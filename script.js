@@ -118,7 +118,7 @@ setTimeout(() => {
     homeSection.style.transform = 'translatey(0)';
 }, 100);
 
-//===============ANIMAÇÃO DAS SEÇÕES =============================
+//=============== ANIMAÇÃO DAS SEÇÕES =============================
 // Seleciona todas as seções e aplica animações de entrada
 const sections = document.querySelectorAll('section');
 
@@ -143,4 +143,13 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 });
+
+// ========================= BOTÃO DE VOLTAR AO TOPO ====================
+    // Adiciona um evento de clique ao botão de voltar ao topo
+    document.querySelector('.top a').addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // Rola suavemente para o topo da página
+    });
+
+
 
