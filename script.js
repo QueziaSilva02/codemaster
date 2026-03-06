@@ -43,23 +43,24 @@ function activeLink() {
 navLinks.forEach(item => item.addEventListener('click', activeLink));
 
 
-// ================ ALTERNAR MODO CLARO/ESCURO ================
-// Função para alternar entre os temas claro e escuro
+
+//======================= ALTERNAR MODO CLARO/ESCURO ============
+//Função para alternar entre os temas claro e escuro
 function toggleMode() {
-    const html = document.dumentElement;
+    const html = document.documentElement;
     html.classList.toggle('light'); // Alterna a classe "light" no elemento HTML
 
-    // Salva o tema escolhido no localStorage
+    //Salva o tema escolhido no localStorage
     const mode = html.classList.contains('light') ? 'light' : 'dark';
     localStorage.setItem('theme', mode);
 
-    // Atualiza a cor do texto do título
+    //Atualiza a cor do texto do título
     updateTextColor();
 }
 
-// Carrega o tema salvo no localStorage ao carregar a página
+//Carrega o tema salvo no localStorage ao carregar a página
 const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
+if (savedTheme){
     document.documentElement.classList.toggle('light', savedTheme === 'light');
 }
 
@@ -110,11 +111,36 @@ updateTextColor();
 const homeSection = document.querySelector('#home');
 homeSection.style.opacity = '0';
 homeSection.style.opacity = 'translateY(20px)';
-homeSection.style.opacity = 'opacity 1s ease. transform is ease';
+homeSection.style.opacity = 'opacity 1s ease. transform 1s ease';
 
 setTimeout(() => {
     homeSection.style.opacity = '1';
     homeSection.style.transform = 'translatey(0)';
 }, 100);
 
+//===============ANIMAÇÃO DAS SEÇÕES =============================
+// Seleciona todas as seções e aplica animações de entrada
+const sections = document.querySelectorAll('section');
+
+sections.forEach((section, index) => {
+    section.style.opacity = '0';
+    section.style.transition = 'opacity 1s, transform 1s';
+
+    //Aplica diferentes transformações com base no índice da seção
+      if ( index !== 0){
+    if ( index === 1) section.style.transform = 'translateY(100px)';
+    else if (index === 2) section.style.transform = 'scale(0.8)';
+    else if (index === 3) section.style.transform = 'rotateY(90deg)';
+      }
+});
+
+// Observer para animar as seções ao rolar a página
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry =>{
+        if (entry.isIntersecting){
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'none';
+        }
+    });
+});
 
