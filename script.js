@@ -42,23 +42,11 @@ function activeLink() {
 // Adiciona um evento de clique a cada link de navegação
 navLinks.forEach(item => item.addEventListener('click', activeLink));
 
-// ================ NAVEGAÇÃO ATIVA ================
-// Seleciona todos os links de navegação
-const navLinks = document.querySelectorAll('.navlist a');
-
-// Função para adicionar a classe "active" ao link clicado
-function activeLink() {
-    navLinks.forEach(item => item.classList.remove('active')); // Remove a classe "active" de todos os links
-    this.classList.add('active'); // Adiciona a classe "active" ao link clicado
-}
-
-// Adiciona um evento de clique a cada link de navegação
-navLinks.forEach(item => item.addEventListener('click', activeLink));
 
 // ================ ALTERNAR MODO CLARO/ESCURO ================
 // Função para alternar entre os temas claro e escuro
 function toggleMode() {
-    const html = document.documentElement;
+    const html = document.dumentElement;
     html.classList.toggle('light'); // Alterna a classe "light" no elemento HTML
 
     // Salva o tema escolhido no localStorage
@@ -75,38 +63,6 @@ if (savedTheme) {
     document.documentElement.classList.toggle('light', savedTheme === 'light');
 }
 
-// ================ NAVEGAÇÃO ATIVA ================
-// Seleciona todos os links de navegação
-const navLinks = document.querySelectorAll('.navlist a');
-
-// Função para adicionar a classe "active" ao link clicado
-function activeLink() {
-    navLinks.forEach(item => item.classList.remove('active')); // Remove a classe "active" de todos os links
-    this.classList.add('active'); // Adiciona a classe "active" ao link clicado
-}
-
-// Adiciona um evento de clique a cada link de navegação
-navLinks.forEach(item => item.addEventListener('click', activeLink));
-
-// ================ ALTERNAR MODO CLARO/ESCURO ================
-// Função para alternar entre os temas claro e escuro
-function toggleMode() {
-    const html = document.documentElement;
-    html.classList.toggle('light'); // Alterna a classe "light" no elemento HTML
-
-    // Salva o tema escolhido no localStorage
-    const mode = html.classList.contains('light') ? 'light' : 'dark';
-    localStorage.setItem('theme', mode);
-
-    // Atualiza a cor do texto do título
-    updateTextColor();
-}
-
-// Carrega o tema salvo no localStorage ao carregar a página
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-    document.documentElement.classList.toggle('light', savedTheme === 'light');
-}
 
 // ================ ANIMAÇÃO DO TÍTULO ================
 // Seleciona o elemento do título e define variáveis para a animação
@@ -148,3 +104,17 @@ function updateTextColor() {
 // Inicia a animação do título ao carregar a página
 document.addEventListener('DOMContentLoaded', animateText);
 updateTextColor();
+
+// ================ ANIMAÇÃO DA SEÇÃO HOME ===============
+//slecione a seção home e aplica uma animação de fade-in
+const homeSection = document.querySelector('#home');
+homeSection.style.opacity = '0';
+homeSection.style.opacity = 'translateY(20px)';
+homeSection.style.opacity = 'opacity 1s ease. transform is ease';
+
+setTimeout(() => {
+    homeSection.style.opacity = '1';
+    homeSection.style.transform = 'translatey(0)';
+}, 100);
+
+
