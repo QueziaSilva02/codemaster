@@ -181,7 +181,8 @@ function showSlide(slideIndex) {
 //função para atualizar a posição do carrosel
 function updateSlidePosition() {
     const slideWidth = slides[0].offsetWidth;
-    carouselSlides.style.transform = translateX(-${currentSlide * slideWidth}px);
+    carouselSlides.style.transform = `translateX
+    (-${currentSlide * slideWidth}px)`;
 }
 
 //funcao para avancar para o proximo slide
@@ -257,3 +258,24 @@ contactForm.addEventListener('submit', (e) => {
     .catch(() => alert('Erro na conexão. Tente novamente'))
 })
 
+// ===================== ANIMAÇÃO DA SEÇÃO "SOBRE MIM" ======================
+//seleciona a seção "sobre mim"
+const aboutSection = document.querySelector('.about');
+
+//função para verificar se a seção esta visivel na tela
+function checkAboutVisibility() {
+    const rect = aboutSection.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+    //verifica se a seção esta dentro da area visivel da tela
+    if(rect.top <= windowHeight * 0.75 && rect.bottom >= 0) {
+        aboutSection.classList.add('visible'); //adiciona a classe visible
+        window.removeEventListener('scroll', checkAboutVisibility); //remove o listener apos a amnimação
+    }
+}
+
+//adiciona um listener para o evento de scroll
+window.addEventListener('scroll', checkAboutVisibility);
+
+//verifica a visibilidade ao carregar a pagina (caso a seção ja esteja visivel)
+checkAboutVisibility();
