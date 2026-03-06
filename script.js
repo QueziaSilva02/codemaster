@@ -151,5 +151,36 @@ const observer = new IntersectionObserver((entries) => {
         window.scrollTo({ top: 0, behavior: 'smooth' }); // Rola suavemente para o topo da página
     });
 
+ // ========================= CARROSSEL DE PROJETOS =======================
+        // Seleciona os elementos do carrosel
+        const carouselSlides = document.querySelector('.carousel-slides');
+        const slides = document.querySelector('.carousel-slide');
+        const prevButton = document.querySelector('.carousel-button.prev');
+        const nextButton = document.querySelector('.carousel-button.next');
+        let currentSlide = 0;
+        let autoSlideInterval;
 
 
+    // Função para exibir o slide atual
+        function showSlide(slideindex) {
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+                slide.style.display = 'none';
+            });
+
+            // Ajusta o índice do slide para garantir que ele esteja dentro dos limites 
+            if (slidesIndex < 0) currentSlide = slides.length - 1;
+            else if (slideIndex >= slides.length) currentSlide = 0;
+            else currentSlide = slideIndex;
+
+            // Exibe o slide atual 
+            slides[currentSlide].classList.add('active');
+            slides[currentSlide].style.display = 'flex';
+            updateSlidePosition();
+
+            // Função para atualizar a posição do carrossel
+            function updateSlidePosition () {
+                const slideWidth = slides[0].offsewidth;
+                carouselSlides.style.transform = translateX
+            }
+        }
