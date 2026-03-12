@@ -1,5 +1,4 @@
-// 1ª Digitação (JS Completo)
-// ================ CONTROLE DO MENU MOBILE ================
+// =========================== CONTROLE DO  MENU MOBILE ============================
 const menuIcon = document.querySelector('#menu-icon');
 const navList = document.querySelector('.navlist');
 
@@ -7,11 +6,11 @@ menuIcon.addEventListener('click', () => {
     menuIcon.classList.toggle('bx-x');
     navList.classList.toggle('open');
 
-    // Bloquear scroll quando menu aberto
+    // bloquear scroll quando menu aberto
     document.body.style.overflow = navList.classList.contains('open') ? 'hidden' : 'auto';
 });
 
-// Fechar menu ao clicar em links
+// fechar menu ao clicar em links
 document.querySelectorAll('.navlist a').forEach(link => {
     link.addEventListener('click', () => {
         menuIcon.classList.remove('bx-x');
@@ -20,139 +19,138 @@ document.querySelectorAll('.navlist a').forEach(link => {
     });
 });
 
-// Fechar menu ao rolar
+// fechar menu ao rolar 
 window.addEventListener('scroll', () => {
-    if (navList.classList.contains('open')) {
+    if(navList.classList.contains('open')) {
         menuIcon.classList.remove('bx-x');
         navList.classList.remove('open');
         document.body.style.overflow = 'auto';
     }
 });
-
-// ================ NAVEGAÇÃO ATIVA ================
-// Seleciona todos os links de navegação
+// =============== NAVEGAÇÃO ATIVA ======================
+// seleciona todos os links de navegação
 const navLinks = document.querySelectorAll('.navlist a');
 
-// Função para adicionar a classe "active" ao link clicado
+// funcao para adicionar a classe "active ao link clicado
 function activeLink() {
-    navLinks.forEach(item => item.classList.remove('active')); // Remove a classe "active" de todos os links
-    this.classList.add('active'); // Adiciona a classe "active" ao link clicado
+    navLinks.forEach(item => item.classList.remove('active')); //remove a classe "active" de todos os links 
+    this.classList.add('active'); // adiciona a classe "active" ao link clicado
 }
 
-// Adiciona um evento de clique a cada link de navegação
+// adiciona um evento de clique a cada link de navegação
 navLinks.forEach(item => item.addEventListener('click', activeLink));
 
-
-
-//======================= ALTERNAR MODO CLARO/ESCURO ============
-//Função para alternar entre os temas claro e escuro
+// =================== ALTERNAR MODO CLARO/ESCURO ========================
+// função para alternar entre os temas claro e escuro
 function toggleMode() {
     const html = document.documentElement;
-    html.classList.toggle('light'); // Alterna a classe "light" no elemento HTML
+    html.classList.toggle('light'); //alternar a classe "light" no elemento html
 
-    //Salva o tema escolhido no localStorage
+    // salva o tema escolhido no localStorage
     const mode = html.classList.contains('light') ? 'light' : 'dark';
     localStorage.setItem('theme', mode);
 
-    //Atualiza a cor do texto do título
-    updateTextColor();
+    // atualiza a cor do texto do titulo
+    updatetextColor();
 }
 
-//Carrega o tema salvo no localStorage ao carregar a página
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-    document.documentElement.classList.toggle('light', savedTheme === 'light');
+// carrega o tema salvo no localStorage ao carregar a pagina
+const savedtheme = localStorage.getItem('theme');
+if(savedtheme) {
+    document.documentElement.classList.toggle('light', savedtheme === 'light');
 }
 
-
-// ================ ANIMAÇÃO DO TÍTULO ================
-// Seleciona o elemento do título e define variáveis para a animação
+// ======================= ANIMAÇÃO DO TÍTULO ====================
+// seleciona o elemento do titulo e define variaveis para a animação
 const titleElement = document.querySelector('#name');
 const text = "CODEMASTER";
 let index = 0;
 let isTyping = true;
 let currentColor = document.documentElement.classList.contains('light') ? 'black' : '#fff';
 
-// Função para animar o texto do título (digitação e apagamento)
-function animateText() {
-    if (isTyping) {
-        if (index < text.length) {
-            titleElement.textContent = text.slice(0, index + 1); // Adiciona uma letra ao título
+// funcao para animar o texto do titulo (digitação e apagamento)
+function animateText(){
+    if(isTyping) {
+        if(index < text.length) {
+            titleElement.textContent = text.slice(0, index + 1); //adiciona uma letra ao titulo
             index++;
-        } else {
-            isTyping = false; // Alterna para o modo de apagamento
+        } else{
+            isTyping = false; //alterna para o modo de apagamento 
         }
     } else {
-        if (index > 1) {
-            titleElement.textContent = text.slice(0, index - 1); // Remove uma letra do título
+        if(index > 1) {
+            titleElement.textContent = text.slice(0, index - 1); //remove uma letra do titulo
             index--;
         } else {
-            isTyping = true; // Alterna para o modo de digitação
-            // Alterna a cor do texto entre branco/preto e laranja
-            currentColor = currentColor === (document.documentElement.classList.contains('light') ? 'black' : '#fff') ? '#C94C16' : (document.documentElement.classList.contains('light') ? 'black' : '#fff');
+            isTyping = true; //alterna para o modo de digitação
+            //alterna a cor do texto entre branco/preto e laranja
+            currentColor = currentColor === (document.documentElement.classList.contains ('light') ? 'black' : '#fff') ? '#c94c16' : (document.documentElement.classList.contains ('light') ? 'black' : '#fff');
             titleElement.style.color = currentColor;
         }
     }
-    setTimeout(animateText, 300); // Define um intervalo para a próxima animação
+    setTimeout(animateText, 300); //define um intervalo para a proxima animação
 }
 
-// Função para atualizar a cor do texto do título com base no tema
-function updateTextColor() {
+//função para atualizar a cor do texto do titulo com base no tema 
+function updatetextColor(){
     currentColor = document.documentElement.classList.contains('light') ? 'black' : '#fff';
     titleElement.style.color = currentColor;
 }
 
-// Inicia a animação do título ao carregar a página
+// inicia a animação do titulo ao carregar a pagina
 document.addEventListener('DOMContentLoaded', animateText);
-updateTextColor();
+updatetextColor();
 
-// ================ ANIMAÇÃO DA SEÇÃO HOME ===============
-//slecione a seção home e aplica uma animação de fade-in
+// ====================== ANIMAÇÃO DA SEÇÃO HOME ======================
+//seleciona a seção home e aplica uma animção de fade-in
 const homeSection = document.querySelector('#home');
 homeSection.style.opacity = '0';
 homeSection.style.transform = 'translateY(20px)';
-homeSection.style.transition = 'opacity 1s ease. transform 1s ease';
+homeSection.style.transition = 'opacity 1s ease, transform 1s ease';
 
 setTimeout(() => {
     homeSection.style.opacity = '1';
     homeSection.style.transform = 'translateY(0)';
 }, 100);
 
-//=============== ANIMAÇÃO DAS SEÇÕES =============================
-// Seleciona todas as seções e aplica animações de entrada
+// ================= ANIMAÇÃO DA SEÇÕES ============================
+//seleciona todas as seções e aplica animações de entrada
 const sections = document.querySelectorAll('section');
 
 sections.forEach((section, index) => {
     section.style.opacity = '0';
     section.style.transition = 'opacity 1s, transform 1s';
 
-    //Aplica diferentes transformações com base no índice da seção
-      if ( index !== 0) {
-    if ( index === 1) section.style.transform = 'translateY(100px)';
-    else if (index === 2) section.style.transform = 'scale(0.8)';
-    else if (index === 3) section.style.transform = 'rotateY(90deg)';
-      }
+    //aplica diferentes transformações com base no indice da seção
+    if(index !== 0) {
+        if(index === 1) section.style.transform = 'translateY(100px)';
+        else if (index === 2) section.style.transform = 'scale(0.8)';
+        else if (index === 3) section.style.transform = 'rotateY(90deg)';
+    }
 });
 
-// Observer para animar as seções ao rolar a página
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry =>{
-        if (entry.isIntersecting){
+//observar para animar as seções ao rolar a pagina
+const observar = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'none';
         }
     });
 });
 
-// ========================= BOTÃO DE VOLTAR AO TOPO ====================
-    // Adiciona um evento de clique ao botão de voltar ao topo
-    document.querySelector('.top a').addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' }); // Rola suavemente para o topo da página
-    });
+//observa cada seção para aplicar a animação
+sections.forEach((section) => observar.observe(section));
 
- // ========================= CARROSSEL DE PROJETOS =======================
-        // seleciona os elementos do carrossel
+// ===================== BOTÃO DE VOLTAR AO TOPO =======================
+//adiciona um evento de clique ao botão de voltar ao topo
+document.querySelector('.top a').addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({top: 0, behavior: 'smooth'}); //rola suavemente para o topo da pagina 
+});
+
+// =============================== CARROSSEL DE PROJETOS ========================
+// seleciona os elementos do carrossel
 const carouselSlides = document.querySelector('.carousel-slides');
 const slides = document.querySelectorAll('.carousel-slide');
 const prevButton = document.querySelector('.carousel-button.prev');
@@ -181,8 +179,7 @@ function showSlide(slideIndex) {
 //função para atualizar a posição do carrosel
 function updateSlidePosition() {
     const slideWidth = slides[0].offsetWidth;
-    carouselSlides.style.transform = `translateX
-    (-${currentSlide * slideWidth}px)`;
+    carouselSlides.style.transform = 'translateX(-${currentSlide * slideWidth}px)';
 }
 
 //funcao para avancar para o proximo slide
@@ -258,7 +255,7 @@ contactForm.addEventListener('submit', (e) => {
     .catch(() => alert('Erro na conexão. Tente novamente'))
 })
 
-// ===================== ANIMAÇÃO DA SEÇÃO "SOBRE MIM" ======================
+// =========================== ANIMAÇÃO DA SEÇÃO "SOBRE MIM" ========================
 //seleciona a seção "sobre mim"
 const aboutSection = document.querySelector('.about');
 
