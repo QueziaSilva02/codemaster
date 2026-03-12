@@ -4,22 +4,22 @@ Recebi o HTML e CSS prontos. O layout renderiza perfeitamente, mas
 o menu mobile não abre e o formulário recarrega a página, o modo escuro/claro não funciona, o carrossel está sem funcionalidade e o menu hambúrguer não aparece
 
 ## Lista de tarefas 📝
-- [ ] 1. Menu mobile
-- [ ] 2. Navegação ativa
-- [ ] 3. Modo escuro/claro
-- [ ] 4. Animação do título
-- [ ] 5. Animação da seção Home
-- [ ] 6. Animação das seções
-- [ ] 7. Botão de voltar ao topo
-- [ ] 8. Carrossel de projetos
-- [ ] 9. Formulário de contato
-- [ ] 10. Atuação da seção "Sobre"
+- [x] 1. Menu mobile
+- [x] 2. Navegação ativa
+- [x] 3. Modo escuro/claro
+- [x] 4. Animação do título
+- [x] 5. Animação da seção Home
+- [x] 6. Animação das seções
+- [x] 7. Botão de voltar ao topo
+- [x] 8. Carrossel de projetos
+- [x] 9. Formulário de contato
+- [x] 10. Atuação da seção "Sobre"
 
 ## 📂 Estrutura de Pastas
 
-bash
+```bash
 codemaster/
-- ├── .vscode/         #  Armazenar configuração padrão de json
+- ├── .vscode/         # Armazenar configuração padrão de json
 - ├── assets/          # Recursos estáticos (PDF)
 - ├── códigos/         # Códigos a serem realizados
 - ├── img/             # Imagens, ícones e recursos visuais
